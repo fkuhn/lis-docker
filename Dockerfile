@@ -9,6 +9,10 @@ RUN apt-get update
 RUN apt-get install -y wget maven mysql-server mysql-client python-setuptools python-dev python-pip libxml2 libxml2-dev
 RUN apt-get install -y libxslt1.1 libxslt1-dev git
 
+# Install oracle java 8 
+RUN add-apt-repository ppa:webupd8team/java
+RUN apt-get update
+RUN apt-get install -y --forceyes oracle-java8-installer
 
 # schemanon installation
 # This is a cmdi validator tool
