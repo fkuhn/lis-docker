@@ -17,12 +17,6 @@ RUN apt-get update
 # suppress graphical EULA confirmation dialogue. -y or --force-yes do not work here 
 RUN yes | apt-get install oracle-java8-installer
 
-# install anaconda 2.4.0
-WORKDIR /tmp
-RUN wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh
-RUN yes | bash Anaconda2-4.0.0-Linux-x86_64.sh
-
-
 # install dgd2cmdi python module
 WORKDIR /opt
 RUN git clone https://github.com/fkuhn/dgd2cmdi.git
