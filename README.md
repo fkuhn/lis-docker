@@ -6,5 +6,5 @@ This is a Dockerfile setup of all tools and packages used in the project's conte
 
 ### Image building
 ```bash
-docker build -t lisclarin https://github.com/fkuhn/lis-docker.git
+$ docker build -t lisclarin https://github.com/fkuhn/lis-docker.git
 ```
