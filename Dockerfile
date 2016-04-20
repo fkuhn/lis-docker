@@ -17,6 +17,12 @@ RUN apt-get update
 # suppress graphical EULA confirmation dialogue. -y or --force-yes do not work here 
 RUN yes | apt-get install oracle-java8-installer
 
+# install dgd2cmdi python module
+WORKDIR /opt
+RUN git clone https://github.com/fkuhn/dgd2cmdi.git
+WORKDIR /opt/dgd2cmdi
+RUN python setup.py install
+
 # schemanon installation
 # This is a cmdi validator tool
 # https://github.com/TheLanguageArchive/SchemAnon
@@ -28,10 +34,3 @@ RUN mvn install:install-file -Dfile=lib/org/eclipse/wst/org.eclipse.wst.xml.xpat
 RUN mvn install:install-file -Dfile=lib/xerces/xercesImpl/2.11.0-xml-schema-1.1-beta/xercesImpl-2.11.0-xml-schema-1.1-beta.jar -DpomFile=lib/xerces/xercesImpl/2.11.0-xml-schema-1.1-beta/xercesImpl-2.11.0-xml-schema-1.1-beta.pom -DgroupId=xerces -DartifactId=xercesImpl -Dversion=2.11.0-xml-schema-1.1-beta -Dpackaging=jar
 RUN mvn clean install 
 RUN rm -rf tmp/SchemAnon
-
-# install dgd2cmdi python module
-WORKDIR /opt
-RUN git clone https://github.com/fkuhn/dgd2cmdi.git
-WORKDIR /opt/dgd2cmdi
-RUN python setup.py install
-
