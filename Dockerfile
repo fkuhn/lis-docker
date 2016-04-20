@@ -20,9 +20,13 @@ RUN yes | apt-get install oracle-java8-installer
 # schemanon installation
 # This is a cmdi validator tool
 # https://github.com/TheLanguageArchive/SchemAnon
+WORKDIR tmp/
+RUN git clone https://github.com/TheLanguageArchive/SchemAnon.git
+WORKDIR tmp/SchemAnon
 RUN mvn install:install-file -Dfile=lib/org/eclipse/wst/org.eclipse.wst.xml.xpath2.processor/1.1.0/org.eclipse.wst.xml.xpath2.processor-1.1.0.jar -DgroupId=org.eclipse.wst -DartifactId=org.eclipse.wst.xml.xpath2.processor -Dversion=1.1.0 -Dpackaging=jar
 RUN mvn install:install-file -Dfile=lib/xerces/xercesImpl/2.11.0-xml-schema-1.1-beta/xercesImpl-2.11.0-xml-schema-1.1-beta.jar -DpomFile=lib/xerces/xercesImpl/2.11.0-xml-schema-1.1-beta/xercesImpl-2.11.0-xml-schema-1.1-beta.pom -DgroupId=xerces -DartifactId=xercesImpl -Dversion=2.11.0-xml-schema-1.1-beta -Dpackaging=jar
 RUN mvn clean install 
+RUN rm -rf tmp/SchemAnon
 
 # install dgd2cmdi python module
 WORKDIR /opt
