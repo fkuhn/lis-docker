@@ -7,7 +7,9 @@ RUN apt-get update
 
 # Required package installation
 RUN apt-get install -y wget maven mysql-server mysql-client python-setuptools python-dev python-pip libxml2 libxml2-dev
-RUN apt-get install -y libxslt1.1 libxslt1-dev git software-properties-common
+RUN apt-get install -y libxslt1.1 libxslt1-dev git
+# need software properties common for the convienent add-apt-repository binary
+RUN apt-get install -y software-properties-common
 
 # Install oracle java 8 
 RUN add-apt-repository ppa:webupd8team/java
