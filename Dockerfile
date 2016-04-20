@@ -14,7 +14,7 @@ RUN apt-get install -y software-properties-common
 # Install oracle java 8 
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
-RUN apt-get install -y oracle-java8-installer
+RUN yes | apt-get install oracle-java8-installer
 
 # schemanon installation
 # This is a cmdi validator tool
